@@ -48,6 +48,7 @@ description: |
     As on iOS, the root tab window cannot be closed.
 extends: Titanium.UI.View
 since: "0.8"
+excludes: { methods:[removeAllChildren] }
 methods:
   - name: open
     summary: Opens a new window.
@@ -59,7 +60,10 @@ methods:
         summary: Window to open.
         type: Titanium.UI.Window
       - name: options
-        summary: Dictionary of display and animation settings to use when opening the window. Identical to the `options` parameter to [Window.open](Titanium.UI.Window.open).
+        summary: |
+            Dictionary of display and animation settings to use when opening the window. 
+            Identical to the `options` parameter to [Window.open](Titanium.UI.Window.open).
+            iOS only supports the **animated** parameter.
         type: Object
   - name: close
     summary: Closes the top-level window for this tab. 
@@ -92,7 +96,10 @@ methods:
         type: Titanium.UI.Window
 
       - name: options
-        summary: Dictionary of display and animation settings to use when opening the window. Identical to the `options` parameter to [Window.close](Titanium.UI.Window.close).
+        summary: |
+            Dictionary of display and animation settings to use when closing the window. 
+            Identical to the `options` parameter to [Window.close](Titanium.UI.Window.close).
+            iOS only supports the **animated** parameter.
         type: Object
         optional: true
 properties:
