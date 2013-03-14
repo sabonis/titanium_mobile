@@ -200,7 +200,7 @@ public class TiC
 	/**
 	 * @module.api
 	 */
-	public static final String EVENT_PINCH = "pinch";	
+	public static final String EVENT_PINCH = "pinch";
 
 	/**
 	 * @module.api
@@ -421,7 +421,7 @@ public class TiC
 	 * @module.api
 	 */
 	public static final String EVENT_STOP = "stop";
-	
+
 	/**
 	 * @module.api
 	 */
@@ -584,7 +584,7 @@ public class TiC
 	 * @module.api
 	 */
 	public static final String PROPERTY_ANIMATED = "animated";
-	
+
 	/**
 	 * @module.api
 	 */
@@ -599,7 +599,7 @@ public class TiC
 	 * @module.api
 	 */
 	public static final String PROPERTY_ANNOTATIONS = "annotations";
-	
+
 	/**
 	 * @module.api
 	 */
@@ -706,7 +706,7 @@ public class TiC
 	 * @module.api
 	 */
 	public static final String PROPERTY_BASE_URL_WEBVIEW = "baseURL";
-	
+
 	/**
 	 * @module.api
 	 */
@@ -736,7 +736,7 @@ public class TiC
 	 * @module.api
 	 */
 	public static final String PROPERTY_BOTTOM = "bottom";
-	
+
 	/**
 	 * @module.api
 	 */
@@ -900,7 +900,7 @@ public class TiC
 	 * @module.api
 	 */
 	public static final String PROPERTY_DATA = "data";
-	
+
 	/**
 	 * @module.api
 	 */
@@ -950,7 +950,7 @@ public class TiC
 	 * @module.api
 	 */
 	public static final String PROPERTY_DISPLAY_ADDRESS = "displayAddress";
-	
+
 	/**
 	 * @module.api
 	 */
@@ -975,7 +975,7 @@ public class TiC
 	 * @module.api
 	 */
 	public static final String PROPERTY_ELLIPSIZE = "ellipsize";
-	
+
 	/**
 	 * @module.api
 	 */
@@ -1015,7 +1015,7 @@ public class TiC
 	 * @module.api
 	 */
 	public static final String PROPERTY_FATHER = "father";
-	
+
 	/**
 	 * @module.api
 	 */
@@ -1030,7 +1030,7 @@ public class TiC
 	 * @module.api
 	 */
 	public static final String PROPERTY_FILTER_CASE_INSENSITIVE = "filterCaseInsensitive";
-	
+
 	/**
 	 * @module.api
 	 */
@@ -1087,7 +1087,7 @@ public class TiC
 	 * @module.api
 	 */
 	public static final String PROPERTY_FREQUENCY = "frequency";
-	
+
 	/**
 	 * @module.api
 	 */
@@ -1167,12 +1167,12 @@ public class TiC
 	 * @module.api
 	 */
 	public static final String PROPERTY_HINT_TEXT = "hintText";
-	
+
 	/**
 	 * @module.api
 	 */
 	public static final String PROPERTY_HOME = "home";
-	
+
 	/**
 	 * @module.api
 	 */
@@ -1192,12 +1192,12 @@ public class TiC
 	 * @module.api
 	 */
 	public static final String PROPERTY_ICON_LEVEL = "iconLevel";
-	
+
 	/**
 	 * @module.api
 	 */
 	public static final String PROPERTY_ICONIFIED = "iconified";
-	
+
 	/**
 	 * @module.api
 	 */
@@ -1223,7 +1223,7 @@ public class TiC
 	 * @module.api
 	 */
 	public static final String PROPERTY_INITIAL_PLAYBACK_TIME = "initialPlaybackTime";
-	
+
 	/**
 	 * @module.api
 	 */
@@ -1248,7 +1248,7 @@ public class TiC
 	 * @module.api
 	 */
 	public static final String PROPERTY_KEYBOARD_TYPE = "keyboardType";
-	
+
 	/**
 	 * @module.api
 	 */
@@ -1338,7 +1338,7 @@ public class TiC
 	 * @module.api
 	 */
 	public static final String PROPERTY_MAGNETIC_HEADING = "magneticHeading";
-	
+
 	/**
 	 * @module.api
 	 */
@@ -1355,7 +1355,7 @@ public class TiC
 	public static final String PROPERTY_MAX = "max";
 
 	public static final String PROPERTY_MAX_AGE = "maxAge";
-	
+
 	/**
 	 * @module.api
 	 */
@@ -1400,7 +1400,7 @@ public class TiC
 	 * @module.api
 	 */
 	public static final String PROPERTY_MIMETYPE = "mimeType";
-	
+
 	/**
 	 * @module.api
 	 */
@@ -1429,7 +1429,7 @@ public class TiC
 	 * @module.api
 	 */
 	public static final String PROPERTY_MODAL = "modal";
-	
+
 	/**
 	 * @module.api
 	 */
@@ -1444,12 +1444,12 @@ public class TiC
 	 * @module.api
 	 */
 	public static final String PROPERTY_NAV_BAR_HIDDEN = "navBarHidden";
-	
+
 	/**
 	 * @module.api
 	 */
 	public static final String PROPERTY_NICKNAME = "nickname";
-	
+
 	/**
 	 * @module.api
 	 */
@@ -1509,7 +1509,7 @@ public class TiC
 	 * @module.api
 	 */
 	public static final String PROPERTY_ORDER = "order";
-	
+
 	/**
 	 * @module.api
 	 */
@@ -1519,7 +1519,7 @@ public class TiC
 	 * @module.api
 	 */
 	public static final String PROPERTY_ORIENTATION_MODES = "orientationModes";
-	
+
 	/**
 	 * @module.api
 	 */
@@ -1544,7 +1544,7 @@ public class TiC
 	 * @module.api
 	 */
 	public static final String PROPERTY_PARENT = "parent";
-	
+
 	/**
 	 * @module.api
 	 */
@@ -1614,7 +1614,7 @@ public class TiC
 	 * @module.api
 	 */
 	public static final String PROPERTY_PREFERRED_PROVIDER = "preferredProvider";
-	
+
 	/**
 	 * @module.api
 	 */
@@ -1634,7 +1634,7 @@ public class TiC
 	 * @module.api
 	 */
 	public static final String PROPERTY_REFERRED_BY = "referredBy";
-	
+
 	/**
 	 * @module.api
 	 */
@@ -1654,7 +1654,7 @@ public class TiC
 	 * @module.api
 	 */
 	public static final String PROPERTY_REGION_FIT = "regionFit";
-	
+
 	/**
 	 * @module.api
 	 */
@@ -1741,7 +1741,7 @@ public class TiC
 	 * @module.api
 	 */
 	public static final String PROPERTY_SEARCH = "search";
-	
+
 	/**
 	 * @module.api
 	 */
@@ -1751,11 +1751,7 @@ public class TiC
 	 * @module.api
 	 */
 	public static final String PROPERTY_SECTION = "section";
-	
-	/**
-	 * @module.api
-	 */
-	public static final String PROPERTY_SECTIONS = "sections";
+
 
 	/**
 	 * @module.api
@@ -1816,7 +1812,7 @@ public class TiC
 	 * @module.api
 	 */
 	public static final String PROPERTY_SISTER = "sister";
-	
+
 	/**
 	 * @module.api
 	 */
@@ -1851,7 +1847,7 @@ public class TiC
 	 * @module.api
 	 */
 	public static final String PROPERTY_SOURCE_POSITION = "sourcePosition";
-	
+
 	/**
 	 * @module.api
 	 */
@@ -1896,7 +1892,7 @@ public class TiC
 	 * @module.api
 	 */
 	public static final String PROPERTY_SUBMIT_ENABLED = "submitEnabled";
-	
+
 	/**
 	 * @module.api
 	 */
@@ -1921,12 +1917,12 @@ public class TiC
 	 * @module.api
 	 */
 	public static final String PROPERTY_TAB_OPEN = "tabOpen";
-	
+
 	/**
 	 * @module.api
 	 */
 	public static final String PROPERTY_TABS_BACKGROUND_COLOR = "tabsBackgroundColor";
-	
+
 	/**
 	 * @module.api
 	 */
@@ -1936,7 +1932,7 @@ public class TiC
 	 * @module.api
 	 */
 	public static final String PROPERTY_TAG = "tag";
-	
+
 	/**
 	 * @module.api
 	 */
@@ -1971,7 +1967,7 @@ public class TiC
 	 * @module.api
 	 */
 	public static final String PROPERTY_TIME = "time";
-	
+
 	/**
 	 * @module.api
 	 */
@@ -2145,7 +2141,7 @@ public class TiC
 	 * @module.api
 	 */
 	public static final String PROPERTY_WORD_WRAP = "wordWrap";
-	
+
 	/**
 	 * @module.api
 	 */
