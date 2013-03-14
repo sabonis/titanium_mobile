@@ -765,11 +765,6 @@ public class TiC
 	/**
 	 * @module.api
 	 */
-	public static final String PROPERTY_CAN_SCALE = "canScale";
-
-	/**
-	 * @module.api
-	 */
 	public static final String PROPERTY_CAN_CANCEL_EVENTS = "canCancelEvents";
 
 	/**
@@ -910,6 +905,11 @@ public class TiC
 	 * @module.api
 	 */
 	public static final String PROPERTY_DATE = "date";
+
+	/**
+	 * @module.api
+	 */
+	public static final String PROPERTY_DECODE_RETRIES = "decodeRetries";
 
 	/**
 	 * @module.api
@@ -1752,6 +1752,11 @@ public class TiC
 	 */
 	public static final String PROPERTY_SECTION = "section";
 	
+	/**
+	 * @module.api
+	 */
+	public static final String PROPERTY_SECTIONS = "sections";
+
 	/**
 	 * @module.api
 	 */
