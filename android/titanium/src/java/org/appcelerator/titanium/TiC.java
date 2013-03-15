@@ -160,6 +160,11 @@ public class TiC
 	/**
 	 * @module.api
 	 */
+	public static final String EVENT_ITEM_CLICK = "itemclick";
+
+	/**
+	 * @module.api
+	 */
 	public static final String EVENT_LOAD = "load";
 
 	/**
@@ -513,6 +518,11 @@ public class TiC
 	/**
 	 * @module.api
 	 */
+	public static final String PROPERTY_ACCESSORY_TYPE = "accessoryType";
+
+	/**
+	 * @module.api
+	 */
 	public static final String PROPERTY_ACTION = "action";
 
 	/**
@@ -710,6 +720,11 @@ public class TiC
 	/**
 	 * @module.api
 	 */
+	public static final String PROPERTY_BIND_ID = "bindId";
+
+	/**
+	 * @module.api
+	 */
 	public static final String PROPERTY_BIRTHDAY = "birthday";
 
 	/**
@@ -796,10 +811,16 @@ public class TiC
 	 * @module.api
 	 */
 	public static final String PROPERTY_CHECKED = "checked";
+
 	/**
 	 * @module.api
 	 */
 	public static final String PROPERTY_CHILD = "child";
+
+	/**
+	 * @module.api
+	 */
+	public static final String PROPERTY_CHILD_TEMPLATES = "childTemplates";
 
 	/**
 	 * @module.api
@@ -915,6 +936,11 @@ public class TiC
 	 * @module.api
 	 */
 	public static final String PROPERTY_DEFAULT_IMAGE = "defaultImage";
+
+	/**
+	 * @module.api
+	 */
+	public static final String PROPERTY_DEFAULT_ITEM_TEMPLATE = "defaultItemTemplate";
 
 	/**
 	 * @module.api
@@ -1238,6 +1264,11 @@ public class TiC
 	 * @module.api
 	 */
 	public static final String PROPERTY_ITEM_ID = "itemId";
+
+	/**
+	 * @module.api
+	 */
+	public static final String PROPERTY_ITEM_INDEX = "itemIndex";
 
 	/**
 	 * @module.api
@@ -1752,6 +1783,10 @@ public class TiC
 	 */
 	public static final String PROPERTY_SECTION = "section";
 
+	/**
+	 * @module.api
+	 */
+	public static final String PROPERTY_SECTION_INDEX = "sectionIndex";
 
 	/**
 	 * @module.api
@@ -1957,6 +1992,11 @@ public class TiC
 	 * @module.api
 	 */
 	public static final String PROPERTY_TEXT_ALIGN = "textAlign";
+
+	/**
+	 * @module.api
+	 */
+	public static final String PROPERTY_TI_PROXY = "tiProxy";
 
 	/**
 	 * @module.api
