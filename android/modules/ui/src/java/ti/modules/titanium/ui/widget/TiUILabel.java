@@ -28,7 +28,7 @@ import android.widget.TextView;
 public class TiUILabel extends TiUIView
 {
 	private static final String TAG = "TiUILabel";
-	
+
 	private int defaultColor;
 	private boolean wordWrap;
 
@@ -39,6 +39,7 @@ public class TiUILabel extends TiUIView
 		TextView tv = new TextView(getProxy().getActivity())
 		{
 			@Override
+            /*
 			protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec)
 			{
 				if (!wordWrap) {
@@ -52,6 +53,7 @@ public class TiUILabel extends TiUIView
 			}
 
 			@Override
+            */
 			protected void onLayout(boolean changed, int left, int top, int right, int bottom)
 			{
 				super.onLayout(changed, left, top, right, bottom);
@@ -77,7 +79,7 @@ public class TiUILabel extends TiUIView
 		super.processProperties(d);
 
 		TextView tv = (TextView) getNativeView();
-		
+
 		// Only accept one, prefer text to title.
 		if (d.containsKey(TiC.PROPERTY_HTML)) {
 			String html = TiConvert.toString(d, TiC.PROPERTY_HTML);
@@ -125,7 +127,7 @@ public class TiUILabel extends TiUIView
 		TiUIHelper.linkifyIfEnabled(tv, d.get(TiC.PROPERTY_AUTO_LINK));
 		tv.invalidate();
 	}
-	
+
 	@Override
 	public void propertyChanged(String key, Object oldValue, Object newValue, KrollProxy proxy)
 	{
@@ -187,5 +189,5 @@ public class TiUILabel extends TiUIView
 			((TextView) view).getPaint().setColorFilter(null);
 		}
 	}
-	
+
 }
