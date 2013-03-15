@@ -76,18 +76,12 @@ public class TiNinePatchHelper
 
 		if (width >= 4 && height >= 4) {
 			for (int i = 0; i < width; i++) {
-				if (b.getPixel(i, 1) != 0) { // The second top pixels have to be transparent.
-					result = false;
-					break;
-				}
-
 				int c = b.getPixel(i, 0);
 				topSum += (c == 0 ? 0 : 1);
 				if (!isValidColor(c)) {
 					result = false;
 					break;
 				}
-
 				c = b.getPixel(i, height-1);
 				bottomSum += (c == 0 ? 0 : 1);
 				if (!isValidColor(c)) {
@@ -98,18 +92,12 @@ public class TiNinePatchHelper
 
 			if (result) {
 				for (int i = 0; i < height; i++) {
-					if (b.getPixel(1, i) != 0) { // The second left pixels have to be transparent.
-						result = false;
-						break;
-					}
-
 					int c = b.getPixel(0, i);
 					leftSum += (c == 0 ? 0 : 1);
 					if (!isValidColor(c)) {
 						result = false;
 						break;
 					}
-
 					c = b.getPixel(width-1, i);
 					rightSum += (c == 0 ? 0 : 1);
 					if (!isValidColor(c)) {
