@@ -180,7 +180,7 @@ static TiViewProxy * FindViewProxyWithBindIdContainingPoint(UIView *view, CGPoin
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
 	NSUInteger sectionCount = [self.listViewProxy.sectionCount unsignedIntegerValue];
-	return MAX(1, sectionCount);
+	return sectionCount;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -195,21 +195,21 @@ static TiViewProxy * FindViewProxyWithBindIdContainingPoint(UIView *view, CGPoin
 	if (templateId == nil) {
 		templateId = _defaultItemTemplate;
 	}
-	NSString *cellIdentifier = [templateId description];
+	NSString *cellIdentifier = [templateId isKindOfClass:[NSNumber class]] ? [NSString stringWithFormat:@"TiUIListView__internal%@", templateId]: [templateId description];
 	TiUIListItem *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
 	if (cell == nil) {
-		id context = self.listViewProxy.executionContext;
+		id<TiEvaluator> context = self.listViewProxy.executionContext;
 		if (context == nil) {
 			context = self.listViewProxy.pageContext;
 		}
-		TiUIListItemProxy *cellProxy = [[TiUIListItemProxy alloc] _initWithPageContext:context];
+		TiUIListItemProxy *cellProxy = [[TiUIListItemProxy alloc] initWithListViewProxy:self.listViewProxy inContext:context];
 		if ([templateId isKindOfClass:[NSNumber class]]) {
 			UITableViewCellStyle cellStyle = [templateId unsignedIntegerValue];
 			cell = [[TiUIListItem alloc] initWithStyle:cellStyle reuseIdentifier:cellIdentifier proxy:cellProxy];
 		} else {
 			cell = [[TiUIListItem alloc] initWithProxy:cellProxy reuseIdentifier:cellIdentifier];
 			id template = [_templates objectForKey:templateId];
-			if ([template isKindOfClass:[NSDictionary class]]) {
+			if (template != nil) {
 				[cellProxy unarchiveFromTemplate:template];
 			}
 		}
@@ -217,6 +217,7 @@ static TiViewProxy * FindViewProxyWithBindIdContainingPoint(UIView *view, CGPoin
 		[cell autorelease];
 	}
 	cell.dataItem = item;
+	cell.proxy.indexPath = indexPath;
 	return cell;
 }
 
@@ -244,12 +245,8 @@ static TiViewProxy * FindViewProxyWithBindIdContainingPoint(UIView *view, CGPoin
 			templateId = _defaultItemTemplate;
 		}
 		if (![templateId isKindOfClass:[NSNumber class]]) {
-			id template = [_templates objectForKey:templateId];
-			if ([template isKindOfClass:[NSDictionary class]]) {
-				propertiesValue = [template objectForKey:@"properties"];
-				properties = ([propertiesValue isKindOfClass:[NSDictionary class]]) ? propertiesValue : nil;
-				heightValue = [properties objectForKey:@"height"];
-			}
+			TiViewTemplate *template = [_templates objectForKey:templateId];
+			heightValue = [template.properties objectForKey:@"height"];
 		}
 	}
 	TiDimension height = _rowHeight;
@@ -271,6 +268,33 @@ static TiViewProxy * FindViewProxyWithBindIdContainingPoint(UIView *view, CGPoin
 {
 	[self fireClickForItemAtIndexPath:indexPath tableView:tableView accessoryButtonTapped:YES];
 }
+
+#pragma mark - TiScrolling
+
+-(void)keyboardDidShowAtHeight:(CGFloat)keyboardTop
+{
+	int lastSectionIndex = [self.listViewProxy.sectionCount unsignedIntegerValue] - 1;
+	ENSURE_CONSISTENCY(lastSectionIndex>=0);
+	CGRect minimumContentRect = [_tableView rectForSection:lastSectionIndex];
+	InsetScrollViewForKeyboard(_tableView,keyboardTop,minimumContentRect.size.height + minimumContentRect.origin.y);
+}
+
+-(void)scrollToShowView:(TiUIView *)firstResponderView withKeyboardHeight:(CGFloat)keyboardTop
+{
+    if ([_tableView isScrollEnabled]) {
+        int lastSectionIndex = [self.listViewProxy.sectionCount unsignedIntegerValue] - 1;
+        ENSURE_CONSISTENCY(lastSectionIndex>=0);
+        CGRect minimumContentRect = [_tableView rectForSection:lastSectionIndex];
+        
+        CGRect responderRect = [self convertRect:[firstResponderView bounds] fromView:firstResponderView];
+        CGPoint offsetPoint = [_tableView contentOffset];
+        responderRect.origin.x += offsetPoint.x;
+        responderRect.origin.y += offsetPoint.y;
+        
+        OffsetScrollViewForRect(_tableView,keyboardTop,minimumContentRect.size.height + minimumContentRect.origin.y,responderRect);
+    }
+}
+
 
 #pragma mark - Internal Methods
 
@@ -341,18 +365,17 @@ static TiViewProxy * FindViewProxyWithBindIdContainingPoint(UIView *view, CGPoin
 
 + (UIView*)titleViewForText:(NSString*)text inTable:(UITableView *)tableView footer:(BOOL)footer
 {
-	CGSize maxSize = CGSizeMake(tableView.bounds.size.width, 1000);
-	UIFont *font = [[WebFont defaultBoldFont] font];
+	CGSize maxSize = CGSizeMake(320, 1000);
+	UIFont *font = [UIFont boldSystemFontOfSize:17];
 	CGSize size = [text sizeWithFont:font constrainedToSize:maxSize lineBreakMode:UILineBreakModeTailTruncation];
+	size.height += 20;
 	
 	int x = (tableView.style==UITableViewStyleGrouped) ? 15 : 10;
-	int y = 10;
-	int y2 = (footer) ? 0 : 10;
-	UIView *containerView = [[[UIView alloc] initWithFrame:CGRectMake(0, y, size.width, size.height+10)] autorelease];
-    UILabel *headerLabel = [[[UILabel alloc] initWithFrame:CGRectMake(x, y2, size.width, size.height)] autorelease];
-	containerView.autoresizingMask = headerLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth| UIViewAutoresizingFlexibleRightMargin| UIViewAutoresizingFlexibleHeight| UIViewAutoresizingFlexibleBottomMargin;
+	UIView *containerView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)] autorelease];
+    UILabel *headerLabel = [[[UILabel alloc] initWithFrame:CGRectMake(x, 0, size.width, size.height)] autorelease];
 	
     headerLabel.text = text;
+	headerLabel.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
     headerLabel.textColor = [UIColor blackColor];
     headerLabel.shadowColor = [UIColor whiteColor];
     headerLabel.shadowOffset = CGSizeMake(0, 1);
