@@ -555,6 +555,7 @@ public class TiListView extends TiUIView {
         KrollDict event = new KrollDict();
         event.put("firstVisibleItem", firstVis);
         event.put("visibleItemCount", visCount);
+        event.put("totalCount", totalCount);
         proxy.fireEvent("scroll2end", event);
     }
     @Override
