@@ -39,7 +39,7 @@ import android.widget.TextView;
 import android.widget.AbsListView;
 //import android.widget.AdapterView;
 
-public class TiListView extends TiUIView {
+public class TiListView extends TiUIView implements AbsListView.OnScrollListener{
 
 	private ListView listView;
 	private TiBaseAdapter adapter;
