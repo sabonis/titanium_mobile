@@ -33,7 +33,7 @@ public:
 	static inline jint jsNumberToJavaInt(JNIEnv *env, v8::Handle<v8::Number> jsNumber) {
 		return jsNumberToJavaInt(jsNumber);
 	}
-	static inline v8::Handle<v8::Number> javaIntToJsNumber(JNIEnv *env, jshort javaInt) {
+	static inline v8::Handle<v8::Number> javaIntToJsNumber(JNIEnv *env, jint javaInt) {
 		return javaIntToJsNumber(javaInt);
 	}
 
@@ -64,7 +64,7 @@ public:
 	static v8::Handle<v8::Number> javaDoubleToJsNumber(jdouble javaDouble);
 
 	static inline jdouble jsNumberToJavaDouble(JNIEnv *env, v8::Handle<v8::Number> jsNumber) {
-		return jsNumberToJavaFloat(jsNumber);
+		return jsNumberToJavaDouble(jsNumber);
 	}
 	static inline v8::Handle<v8::Number> javaDoubleToJsNumber(JNIEnv *env, jdouble javaDouble) {
 		return javaDoubleToJsNumber(javaDouble);
