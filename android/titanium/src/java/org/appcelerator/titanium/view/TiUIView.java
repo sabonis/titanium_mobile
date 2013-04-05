@@ -62,7 +62,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 
 /**
- * This class is for Titanium View implementations, that correspond with TiViewProxy. 
+ * This class is for Titanium View implementations, that correspond with TiViewProxy.
  * A TiUIView is responsible for creating and maintaining a native Android View instance.
  */
 public abstract class TiUIView
@@ -75,8 +75,8 @@ public abstract class TiUIView
 
 	private static AtomicInteger idGenerator;
 
-	// When distinguishing twofingertap and pinch events, minimum motion (in pixels) 
-	// to qualify as a scale event. 
+	// When distinguishing twofingertap and pinch events, minimum motion (in pixels)
+	// to qualify as a scale event.
 	private static final float SCALE_THRESHOLD = 6.0f;
 
 	public static final int SOFT_KEYBOARD_DEFAULT_ON_FOCUS = 0;
@@ -92,7 +92,7 @@ public abstract class TiUIView
 	protected LayoutParams layoutParams;
 	protected TiAnimationBuilder animBuilder;
 	protected TiBackgroundDrawable background;
-	
+
 	protected KrollDict additionalEventData;
 
 	// Since Android doesn't have a property to check to indicate
@@ -178,11 +178,11 @@ public abstract class TiUIView
 			}
 		}
 	}
-	
+
 	public void setAdditionalEventData(KrollDict dict) {
 		additionalEventData = dict;
 	}
-	
+
 	public KrollDict getAdditionalEventData() {
 		return additionalEventData;
 	}
@@ -344,7 +344,7 @@ public abstract class TiUIView
 	private boolean hasImage(KrollDict d)
 	{
 		return d.containsKeyAndNotNull(TiC.PROPERTY_BACKGROUND_IMAGE)
-			|| d.containsKeyAndNotNull(TiC.PROPERTY_BACKGROUND_SELECTED_IMAGE) 
+			|| d.containsKeyAndNotNull(TiC.PROPERTY_BACKGROUND_SELECTED_IMAGE)
 			|| d.containsKeyAndNotNull(TiC.PROPERTY_BACKGROUND_FOCUSED_IMAGE)
 			|| d.containsKeyAndNotNull(TiC.PROPERTY_BACKGROUND_DISABLED_IMAGE);
 	}
@@ -361,7 +361,7 @@ public abstract class TiUIView
 
 	private boolean hasBorder(KrollDict d)
 	{
-		return d.containsKeyAndNotNull(TiC.PROPERTY_BORDER_COLOR) 
+		return d.containsKeyAndNotNull(TiC.PROPERTY_BORDER_COLOR)
 			|| d.containsKeyAndNotNull(TiC.PROPERTY_BORDER_RADIUS)
 			|| d.containsKeyAndNotNull(TiC.PROPERTY_BORDER_WIDTH);
 	}
@@ -412,7 +412,7 @@ public abstract class TiUIView
 				TiMatrixAnimation matrixAnimation = (TiMatrixAnimation) a;
 				matrixAnimation.invalidateWithMatrix(nativeView);
 			}
-			if (informParent) {				
+			if (informParent) {
 				if (parent != null) {
 					TiUIView uiv = parent.peekView();
 					if (uiv != null) {
@@ -699,7 +699,7 @@ public abstract class TiUIView
 				nativeView.setBackgroundColor(bgColor);
 			}
 		}
-		
+
 		if (d.containsKey(TiC.PROPERTY_VISIBLE) && !nativeViewNull) {
 			setVisibility(TiConvert.toBoolean(d, TiC.PROPERTY_VISIBLE, true) ? View.VISIBLE : View.INVISIBLE);
 		}
@@ -720,10 +720,10 @@ public abstract class TiUIView
 				applyTransform(matrix);
 			}
 		}
-		
+
 		if (d.containsKey(TiC.PROPERTY_KEEP_SCREEN_ON) && !nativeViewNull) {
 			nativeView.setKeepScreenOn(TiConvert.toBoolean(d, TiC.PROPERTY_KEEP_SCREEN_ON, false));
-			
+
 		}
 
 		if (d.containsKey(TiC.PROPERTY_ACCESSIBILITY_HINT) || d.containsKey(TiC.PROPERTY_ACCESSIBILITY_LABEL)
@@ -739,7 +739,7 @@ public abstract class TiUIView
 			propertyChanged(change.getName(), change.getOldValue(), change.getNewValue(), proxy);
 		}
 	}
-	
+
 	private void applyCustomBackground()
 	{
 		applyCustomBackground(true);
@@ -750,12 +750,12 @@ public abstract class TiUIView
 		if (nativeView != null) {
 			if (background == null) {
 				background = new TiBackgroundDrawable();
-	
+
 				Drawable currentDrawable = nativeView.getBackground();
 				if (currentDrawable != null) {
 					if (reuseCurrentDrawable) {
 						background.setBackgroundDrawable(currentDrawable);
-						
+
 					} else {
 						nativeView.setBackgroundDrawable(null);
 						currentDrawable.setCallback(null);
@@ -896,7 +896,7 @@ public abstract class TiUIView
 		String bgSelected = d.optString(TiC.PROPERTY_BACKGROUND_SELECTED_IMAGE, bg);
 		String bgFocused = d.optString(TiC.PROPERTY_BACKGROUND_FOCUSED_IMAGE, bg);
 		String bgDisabled = d.optString(TiC.PROPERTY_BACKGROUND_DISABLED_IMAGE, bg);
-		
+
 		String bgColor = d.getString(TiC.PROPERTY_BACKGROUND_COLOR);
 		String bgSelectedColor = d.optString(TiC.PROPERTY_BACKGROUND_SELECTED_COLOR, bgColor);
 		String bgFocusedColor = d.optString(TiC.PROPERTY_BACKGROUND_FOCUSED_COLOR, bgColor);
@@ -932,7 +932,7 @@ public abstract class TiUIView
 		}
 
 		if (bg != null || bgSelected != null || bgFocused != null || bgDisabled != null ||
-				bgColor != null || bgSelectedColor != null || bgFocusedColor != null || bgDisabledColor != null || gradientDrawable != null) 
+				bgColor != null || bgSelectedColor != null || bgFocusedColor != null || bgDisabledColor != null || gradientDrawable != null)
 		{
 			if (background == null) {
 				applyCustomBackground(false);
@@ -1110,12 +1110,12 @@ public abstract class TiUIView
 						float timeDelta = sgd.getTimeDelta() == 0 ? minTimeDelta : sgd.getTimeDelta();
 
 						// Suppress scale events (and allow for possible two-finger tap events)
-						// until we've moved at least a few pixels. Without this check, two-finger 
+						// until we've moved at least a few pixels. Without this check, two-finger
 						// taps are very hard to register on some older devices.
 						if (!didScale) {
 							if (Math.abs(sgd.getCurrentSpan() - startSpan) > SCALE_THRESHOLD) {
 								didScale = true;
-							} 
+							}
 						}
 
 						if (didScale) {
@@ -1123,7 +1123,7 @@ public abstract class TiUIView
 							data.put(TiC.EVENT_PROPERTY_SCALE, sgd.getCurrentSpan() / startSpan);
 							data.put(TiC.EVENT_PROPERTY_VELOCITY, (sgd.getScaleFactor() - 1.0f) / timeDelta * 1000);
 							data.put(TiC.EVENT_PROPERTY_SOURCE, proxy);
-	
+
 							return fireEvent(TiC.EVENT_PINCH, data);
 						}
 					}
@@ -1196,7 +1196,7 @@ public abstract class TiUIView
 				}
 			}
 		});
-		
+
 		touchable.setOnTouchListener(new OnTouchListener()
 		{
 			int pointersDown = 0;
@@ -1250,7 +1250,7 @@ public abstract class TiUIView
 				return false;
 			}
 		});
-		
+
 	}
 
 	protected void registerForTouch(final View touchable)
@@ -1258,9 +1258,9 @@ public abstract class TiUIView
 		if (touchable == null) {
 			return;
 		}
-		
+
 		registerTouchEvents(touchable);
-		
+
 		// Previously, we used the single tap handling above to fire our click event.  It doesn't
 		// work: a single tap is not the same as a click.  A click can be held for a while before
 		// lifting the finger; a single-tap is only generated from a quick tap (which will also cause
@@ -1449,7 +1449,7 @@ public abstract class TiUIView
 	 */
 	protected void setOnClickListener(View view)
 	{
-		
+
 		view.setOnClickListener(new OnClickListener()
 		{
 			public void onClick(View view)
@@ -1458,7 +1458,7 @@ public abstract class TiUIView
 			}
 		});
 	}
-	
+
 	public boolean fireEvent(String eventName, KrollDict data) {
 		return fireEvent(eventName, data, true);
 	}
