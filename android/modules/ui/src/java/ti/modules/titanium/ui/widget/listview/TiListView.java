@@ -244,6 +244,7 @@ public class TiListView extends TiUIView implements AbsListView.OnScrollListener
 		listView.setFocusable(true);
 		listView.setFocusableInTouchMode(true);
 		listView.setDescendantFocusability(ViewGroup.FOCUS_AFTER_DESCENDANTS);
+        listView.setOnScrollListener(this);
 
 		try {
 			headerFooterId = TiRHelper.getResource("layout.titanium_ui_list_header_or_footer");
